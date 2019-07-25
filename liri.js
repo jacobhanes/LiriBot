@@ -16,12 +16,14 @@ if (varOne === "spotify-this-song") {
         let artist = data.tracks.items[0].album.artists[0].name;
         let album = data.tracks.items[0].album.name;
         let song = data.tracks.items[0].name;
-        let songLink = data.tracks.items[0].external_urls;
+        let songLink = data.tracks.items[0].external_urls.spotify;
 
-        console.log(artist);
-        console.log(album);
-        console.log(song);
-        console.log(songLink);
+        console.log("Artist: " + artist + "\nSong: " + song + "\nLink: " + songLink + "\nAlbum" + album + "\nEnjoy your music!")
+
+        // console.log(artist);
+        // console.log(album);
+        // console.log(song);
+        // console.log(songLink);
 
         
     });
