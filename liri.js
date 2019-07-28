@@ -6,7 +6,7 @@ var keys = require("./keys");
 var spotify = new Spotify(keys.spotify);
 
 let varOne = process.argv[2];
-let varTwo = process.argv[3];
+let varTwo = process.argv.slice(3).join(" ");
 
 if (varOne === "spotify-this-song") {
     spotify.search({ type: 'track', query: varTwo }, function (err, data) {
@@ -35,9 +35,16 @@ if (varOne === "movie-this") {
 if (varOne === "concert-this") {
     
     axios.get("https://rest.bandsintown.com/artists/" + varTwo + "/events?app_id=codingbootcamp").then(function (EventData){
-        console.log(EventData.venue.name);
-        console.log(EventData.venue.city);
-        console.log(EventData.venue.region);
-        console.log(EventData.datetime);
+        let eventData = EventData.data[0];
+        let bitData = [
+            "Venue name: " + eventData.venue.name,
+            "Event date: " + eventData.datetime,
+            "Event City: " + eventData.venue.city,
+        ].join("\n\n");
+        console.log(bitData);
+        // console.log(eventData.venue.name);
+        // console.log(eventData.datetime);
+        // console.log(eventData.venue.city);
+        // console.log(eventData);
     })
 }
